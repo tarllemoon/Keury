@@ -70,7 +70,6 @@ z-index:999;
 ">🎵 TOCAR</button>
 <div id="container">
 <div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;">
-  <button onclick="prev()">Voltar</button>
   <button onclick="next()">Continuar</button>
 </div>
 <script>
@@ -84,23 +83,7 @@ z-index:999;
 "<h2>Capítulo 7</h2><p>Se um dia você quiser tentar…<br>eu tô aqui.<br>não com pressa.<br>não com cobrança.<br>só com verdade.</p><br><p>— apenas eu.</p>"
 ];
 
-let i = 0;
-document.getElementById("text").innerHTML = pages[i];
-
-function next(){
-  if(i < pages.length - 1){
-    i++;
-    document.getElementById("text").innerHTML = pages[i];
-  }
-}
-
-function prev(){
-  if(i > 0){
-    i--;
-    document.getElementById("text").innerHTML = pages[i];
-  }
-}
-
+function next(){i++; if(i<pages.length){document.getElementById('text').innerHTML=pages[i];} else {document.querySelector('button').style.display='none';}}
 function spawnHeart(){
   const h = document.createElement("div");
   h.className = "heart";
