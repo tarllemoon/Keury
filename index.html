@@ -74,7 +74,7 @@ z-index:999;
   <button onclick="next()">Continuar</button>
 </div>
 <script>
-const pages = [
+ const pages = [
 "<h2>Capítulo 1</h2><p>Oi é o Tarley aqui<br>talvez você não esperasse receber algo assim de mim.<br>mas eu precisava dizer isso.</p>",
 "<h2>Capítulo 2</h2><p>Eu sei que tô aqui de novo.<br>Pois eu te amo.<br>E tô tentando de novo.</p>",
 "<h2>Capítulo 3</h2><p>No começo eu me afastei.<br>Eu achei que o que eu sentia era só vontade, só desejo…<br>mas o tempo me mostrou que não era.</p>",
@@ -83,22 +83,34 @@ const pages = [
 "<h2>Capítulo 6</h2><p>Eu sei que você tem seus medos.<br>Eu não quero te apressar.<br>Eu não quero te prender.<br>Eu só queria ser o lugar onde você se sente segura pra ficar.</p>",
 "<h2>Capítulo 7</h2><p>Se um dia você quiser tentar…<br>eu tô aqui.<br>não com pressa.<br>não com cobrança.<br>só com verdade.</p><br><p>— apenas eu.</p>"
 ];
-let i=0;
-document.getElementById('text').innerHTML=pages[i];
+
+let i = 0;
+document.getElementById("text").innerHTML = pages[i];
+
 function next(){
-  if(i < pages.length-1){
+  if(i < pages.length - 1){
     i++;
-    document.getElementById('text').innerHTML = pages[i];
+    document.getElementById("text").innerHTML = pages[i];
   }
 }
 
 function prev(){
   if(i > 0){
     i--;
-    document.getElementById('text').innerHTML = pages[i];
+    document.getElementById("text").innerHTML = pages[i];
   }
 }
-function spawnHeart(){const h=document.createElement('div');h.className='heart';h.innerHTML='💜';h.style.left=Math.random()*100+'vw';h.style.fontSize=12+Math.random()*18+'px';document.body.appendChild(h);setTimeout(()=>h.remove(),8000)}
+
+function spawnHeart(){
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = (12 + Math.random()*18) + "px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+}
+
 setInterval(spawnHeart,600);
 </script>
 </body>
