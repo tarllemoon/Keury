@@ -1,100 +1,143 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <title>Para Você</title>
+
 <style>
-html,body{
-margin:0;
-padding:0;
-width:100%;
-min-height:100vh;
-font-family:'Segoe UI',sans-serif;
-background:radial-gradient(circle at top, #2a0040, #000);
-color:#eee;
-overflow:hidden
-} UI',sans-serif;background:radial-gradient(circle at top, #2a0040, #000);color:#eee;overflow:hidden}
-#container{
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
-padding:20px;
-box-sizing:border-box
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1b0033, #000);
+  color: #eee;
+  overflow: hidden;
 }
-.card{
-width:100%;
-max-width:720px;
-font-size:55px;
-line-height:1.8;
-padding:10px;
-box-sizing:border-box;
-animation:fadeIn 1.5s
+
+#container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
-button{
-  margin-top:35px;
-  padding:38px 46px;
-  border:none;
-  border-radius:40px;
-  background:#7b2cff;
-  color:white;
-  font-size:20px;
-  cursor:pointer;
-  box-shadow:0 0 30px rgba(180,60,255,0.9)
+
+.card {
+  width: 100%;
+  max-width: 720px;
+  font-size: 32px;
+  line-height: 1.8;
+  padding: 20px;
+  animation: fadeIn 1s;
 }
-button:hover{transform:scale(1.05)}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.heart{position:fixed;color:#b366ff;font-size:20px;animation:fall 8s linear infinite}
-@keyframes fall{0%{transform:translateY(-10vh);opacity:0}10%{opacity:1}100%{transform:translateY(110vh);opacity:0}}
+
+button {
+  margin-top: 35px;
+  padding: 30px 46px;
+  border: none;
+  border-radius: 60px;
+  background: #7b2cff;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 35px rgba(200,80,255,1);
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#playBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heart {
+  position: fixed;
+  top: -10px;
+  animation: fall 8s linear;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
 </style>
 </head>
+
 <body>
-  <audio id="bgm" autoplay loop>
+
+<audio id="bgm" loop>
   <source src="Dai the Flu(MP3_160K).mp3" type="audio/mpeg">
 </audio>
-  <button id="playBtn" onclick="document.getElementById('bgm').play()" style="
-position:fixed;
-top:20px;
-right:20px;
-background:#7b2cff;
-color:white;
-border:none;
-border-radius:60px;
-padding:30px 46px;
-font-size:30px;
-letter-spacing:1px;
-box-shadow:0 0 35px rgba(200,80,255,1);
-z-index:999;
-">🎵 TOCAR</button>
+
+<button id="playBtn" onclick="document.getElementById('bgm').play()">🎵 TOCAR</button>
+
 <div id="container">
-<div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;">
+  <div class="card" id="content"></div>
   <button onclick="next()">Continuar</button>
 </div>
+
 <script>
- const pages = [
-"<h2>Capítulo 1</h2><p>Oi é o Tarley aqui<br>talvez você não esperasse receber algo assim de mim.<br>mas eu precisava dizer isso.</p>",
-"<h2>Capítulo 2</h2><p>Eu sei que tô aqui de novo.<br>Pois eu te amo.<br>E tô tentando de novo.</p>",
+const pages = [
+  const pages = [
+"<h2>Capítulo 1</h2><p>Oi…<br>talvez você não esperasse receber algo assim de mim.<br>mas eu precisava dizer isso.</p>",
+"<h2>Capítulo 2</h2><p>Eu sei que tô aqui de novo.<br>porque eu te amo.<br>e tô tentando de novo.</p>",
 "<h2>Capítulo 3</h2><p>No começo eu me afastei.<br>Eu achei que o que eu sentia era só vontade, só desejo…<br>mas o tempo me mostrou que não era.</p>",
 "<h2>Capítulo 4</h2><p>Eu sinto sua falta do jeito mais silencioso possível.<br>Nos detalhes.<br>Nas músicas.<br>Nos gostos parecidos.<br>No jeito que você combina comigo sem nem tentar.</p>",
 "<h2>Capítulo 5</h2><p>Você não é qualquer pessoa.<br>Você é rara.<br>Alternativa.<br>Linda de um jeito que não se explica — se sente.</p>",
 "<h2>Capítulo 6</h2><p>Eu sei que você tem seus medos.<br>Eu não quero te apressar.<br>Eu não quero te prender.<br>Eu só queria ser o lugar onde você se sente segura pra ficar.</p>",
-"<h2>Capítulo 7</h2><p>Se um dia você quiser tentar…<br>eu tô aqui.<br>não com pressa.<br>não com cobrança.<br>só com verdade.</p><br><p>— apenas eu.</p>"
+"<h2>Capítulo 7</h2><p>Se um dia você quiser tentar…<br>eu tô aqui.<br>não com pressa.<br>não com cobrança.<br>só com verdade.</p><br><p>— alguém que ainda escolhe você.</p>"
 ];
 
-function next(){i++; if(i<pages.length){document.getElementById('text').innerHTML=pages[i];} else {document.querySelector('button').style.display='none';}}
-function spawnHeart(){
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "❤";
-  h.style.left = Math.random()*100 + "vw";
-  h.style.fontSize = (12 + Math.random()*18) + "px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),8000);
+let i = 0;
+const content = document.getElementById("content");
+
+// mostra o primeiro texto
+content.innerHTML = pages[0];
+
+function next() {
+  i++;
+  if (i < pages.length) {
+    content.style.animation = "none";
+    content.offsetHeight; // reset animação
+    content.style.animation = "fadeIn 1s";
+    content.innerHTML = pages[i];
+  }
 }
 
-setInterval(spawnHeart,600);
+function spawnHeart() {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = (12 + Math.random() * 24) + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 8000);
+}
+
+setInterval(spawnHeart, 600);
 </script>
+
 </body>
 </html>
