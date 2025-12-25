@@ -69,8 +69,9 @@ box-shadow:0 0 35px rgba(200,80,255,1);
 z-index:999;
 ">🎵 TOCAR</button>
 <div id="container">
-<div class="card" id="text"></div>
-<button onclick="next()">Continuar</button>
+<div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;">
+  <button onclick="prev()">Voltar</button>
+  <button onclick="next()">Continuar</button>
 </div>
 <script>
 const pages = [
@@ -84,7 +85,19 @@ const pages = [
 ];
 let i=0;
 document.getElementById('text').innerHTML=pages[i];
-function next(){i++; if(i<pages.length){document.getElementById('text').innerHTML=pages[i];} else {document.querySelector('button').style.display='none';}}
+function next(){
+  if(i < pages.length-1){
+    i++;
+    document.getElementById('text').innerHTML = pages[i];
+  }
+}
+
+function prev(){
+  if(i > 0){
+    i--;
+    document.getElementById('text').innerHTML = pages[i];
+  }
+}
 function spawnHeart(){const h=document.createElement('div');h.className='heart';h.innerHTML='💜';h.style.left=Math.random()*100+'vw';h.style.fontSize=12+Math.random()*18+'px';document.body.appendChild(h);setTimeout(()=>h.remove(),8000)}
 setInterval(spawnHeart,600);
 </script>
