@@ -3,7 +3,16 @@
 <meta charset="UTF-8">
 <title>Para Você</title>
 <style>
-html,body{margin:0;padding:0;width:100%;height:100%;font-family:'Segoe UI',sans-serif;background:radial-gradient(circle at top, #2a0040, #000);color:#eee;overflow:hidden}
+html,body{
+margin:0;
+padding:0;
+width:100%;
+min-height:100vh;
+font-family:'Segoe UI',sans-serif;
+background:radial-gradient(circle at top, #2a0040, #000);
+color:#eee;
+overflow:hidden
+} UI',sans-serif;background:radial-gradient(circle at top, #2a0040, #000);color:#eee;overflow:hidden}
 #container{
 width:100%;
 height:100%;
@@ -16,12 +25,14 @@ padding:20px;
 box-sizing:border-box
 }
 .card{
-  max-width:650px;
-  font-size:19px;
-  line-height:1.7;
-  animation:fadeIn 1.5s
+width:100%;
+max-width:720px;
+font-size:20px;
+line-height:1.8;
+padding:10px;
+box-sizing:border-box;
+animation:fadeIn 1.5s
 }
-
 button{
   margin-top:35px;
   padding:16px 36px;
@@ -45,14 +56,15 @@ button:hover{transform:scale(1.05)}
 </audio>
   <button id="playBtn" onclick="document.getElementById('bgm').play()" style="
 position:fixed;
-bottom:20px;
+top:20px;
 right:20px;
 background:#7b2cff;
 color:white;
 border:none;
 border-radius:50px;
-padding:12px 20px;
-box-shadow:0 0 20px rgba(123,44,255,0.7);
+padding:12px 22px;
+box-shadow:0 0 20px rgba(180,60,255,0.8);
+z-index:999;
 ">▶ música</button>
 <div id="container">
 <div class="card" id="text"></div>
